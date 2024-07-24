@@ -5,17 +5,8 @@ const currency1 = document.getElementById('currency1');
 const currency2 = document.getElementById('currency2');
 const amount1 = document.getElementById('amount1');
 const amount2 = document.getElementById('amount2');
-const country1 = document.getElementById('country1');
-const country2 = document.getElementById('country2');
 
 let rates = {};
-const countryInfo = {
-    'INR': 'Indian Rupee (INR) - India',
-    'USD': 'United States Dollar (USD) - United States',
-    'EUR': 'Euro (EUR) - European Union',
-    'GBP': 'British Pound (GBP) - United Kingdom',
-    // Add more country and currency info here as needed
-};
 
 async function getRates() {
     const response = await fetch(apiUrl);
@@ -36,12 +27,8 @@ function populateCurrencyOptions() {
         currency1.appendChild(option1);
         currency2.appendChild(option2);
     });
-    updateCountryInfo();
-}
-
-function updateCountryInfo() {
-    country1.textContent = countryInfo[currency1.value] || 'Currency information not available';
-    country2.textContent = countryInfo[currency2.value] || 'Currency information not available';
+    currency1.value = 'USD';
+    currency2.value = 'INR';
 }
 
 function convert() {
@@ -57,14 +44,8 @@ function convert() {
     amount2.value = toAmount.toFixed(2);
 }
 
-currency1.addEventListener('change', () => {
-    convert();
-    updateCountryInfo();
-});
-currency2.addEventListener('change', () => {
-    convert();
-    updateCountryInfo();
-});
+currency1.addEventListener('change', convert);
+currency2.addEventListener('change', convert);
 amount1.addEventListener('input', convert);
 amount2.addEventListener('input', () => {
     const fromCurrency = currency2.value;
