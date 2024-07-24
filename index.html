@@ -8,22 +8,34 @@
 </head>
 <body>
     <div class="container">
-        <h1>Currency Converter</h1>
-        <div class="converter">
+        <h1>Waiting on a better rate?</h1>
+        <p>Set an alert now, and we’ll tell you when it gets better. And with our daily summaries, you’ll never miss out on the latest news.</p>
+        <div class="alert-settings">
+            <div class="daily-updates">
+                <label>
+                    <input type="checkbox" id="daily-updates-checkbox">
+                    Daily updates
+                    <span>Receive daily email about the USD → INR exchange rate</span>
+                </label>
+            </div>
             <div class="input-group">
-                <input type="number" id="amount1" placeholder="Enter amount">
+                <label for="amount1">Email me when</label>
+                <input type="number" id="amount1" placeholder="1">
                 <select id="currency1"></select>
-                <p id="country1"></p>
             </div>
             <div class="input-group">
-                <input type="number" id="amount2" placeholder="Enter amount">
+                <label for="amount2">goes above</label>
+                <input type="number" id="amount2" placeholder="0.00">
                 <select id="currency2"></select>
-                <p id="country2"></p>
             </div>
+            <div class="input-group">
+                <label for="email">Your email address</label>
+                <input type="email" id="email" placeholder="name.surname@gmail.com">
+            </div>
+            <button id="rate-alerts-button">Get rate alerts</button>
         </div>
-        <button onclick="convert()">Convert</button>
+        <h2>Live Exchange Rates</h2>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
